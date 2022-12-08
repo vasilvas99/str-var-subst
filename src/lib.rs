@@ -46,6 +46,7 @@ mod tests {
     static TEST_EXPR: &'static str = "This is a test string that has %{{test_num}} %{{test_num_2}}%{{test_num}} %{{test_num_2}} %{{empty_var}}variables";
     use crate::replace_variables;
     fn one_two_replace(variable: &str) -> &str {
+        let variable = variable.trim();
         if variable == "test_num" {
             return "1"
         }
