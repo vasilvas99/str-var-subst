@@ -29,7 +29,7 @@ lazy_static! {
 ///
 pub fn replace_variables<F>(template_text: &str, replacement_strategy: F) -> String
 where
-    F: Fn(&str) -> String
+    F: Fn(&str) -> String,
 {
     let result = RE.replace_all(template_text, |caps: &Captures| {
         format!("{}", replacement_strategy(&remove_var_delimiters(&caps[0])))
@@ -52,7 +52,7 @@ fn remove_var_delimiters(raw_variable: &str) -> String {
 pub fn map_to_env(var: &str) -> String {
     match env::var(var) {
         Ok(val) => val,
-        Err(_) => String::from("")
+        Err(_) => String::from(""),
     }
 }
 
