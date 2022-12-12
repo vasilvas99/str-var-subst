@@ -58,7 +58,7 @@ pub fn map_to_env(var: &str) -> String {
 
 /// Directly replace environmental variables in a template
 /// If the variable is unset it is replaced with "" (an empty string).
-pub fn env_subst(template_text: &str) -> String {
+pub fn envsubst(template_text: &str) -> String {
     replace_variables(&template_text, map_to_env)
 }
 
@@ -91,7 +91,7 @@ mod tests {
         let val = "environment";
         let template = format!("This string uses a value from the %{{{{{}}}}}", key);
         env::set_var(key, val);
-        let res = env_subst(&template);
+        let res = envsubst(&template);
         env::remove_var(key);
         assert_eq!(res, "This string uses a value from the environment");
         println!("{}", res);
