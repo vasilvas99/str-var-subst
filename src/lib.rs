@@ -14,7 +14,7 @@ lazy_static! {
 /// Example usage:
 /// ```
 /// use str_var_subst::replace_variables;
-/// let test_str = "Hi my name is %{{name}}%{{no_var}}";
+/// let test_str = "Hi my name is %{{name}}%{{no_var}}!";
 /// let parsed_str = replace_variables(test_str, |var| {
 ///     if var == "name" {
 ///         return "John"
@@ -22,8 +22,8 @@ lazy_static! {
 ///         return "" // e.g. %{{no_var}} gets mapped to the empty string
 ///     }
 /// });
-/// assert_eq!(parsed_str, "Hi my name is John");
-/// println!("{}", parsed_str); // Hi my name is John
+/// assert_eq!(parsed_str, "Hi my name is John!");
+/// println!("{}", parsed_str); // Hi my name is John!
 /// ```
 ///
 pub fn replace_variables<F>(template_text: &str, replacement_strategy: F) -> String
