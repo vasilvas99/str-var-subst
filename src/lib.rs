@@ -1,8 +1,8 @@
-use fancy_regex::{Regex,Captures};
+use regex::{Regex,Captures};
 use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref RE: Regex = Regex::new(r"(%{{)([a-zA-Z_]\w*)(}})").unwrap();
+    static ref RE: Regex = Regex::new(r"(%\{\{)([a-zA-Z_]\w*)(\}\})").unwrap();
 }
 
 /// Replaces variables in strings in the format %{{variable}}
